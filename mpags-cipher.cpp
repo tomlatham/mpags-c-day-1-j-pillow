@@ -3,13 +3,17 @@
 #include <vector>
 
 int main(int argc, char* argv[]){
-
+/* Cipher that currently can take take a user input and creates an output following:
+	- All letters are uppercase
+	- All numbers are converted to words
+	- All non-alphas are removes */
+	
 	std::vector<std::string> cmdLineArgs{argv, argv+argc};
 	
-	std::string oFile_name{""};
+	std::string oFile_name{""};		// Create strings for input/output file names
 	std::string iFile_name{""};
 	
-	for(size_t i=0;i<cmdLineArgs.size();i++){
+	for(size_t i=0;i<cmdLineArgs.size();i++){							// Check cmd line arguments
 		if(cmdLineArgs[i] == "-h" || cmdLineArgs[i] == "--help"){
 			std::cout << "You have requested help!. This is some help. I hope it was helpful. Goodbye!" << std::endl;
 			return 0;
@@ -96,7 +100,7 @@ int main(int argc, char* argv[]){
 			my_str += num;									// - In each case, add result to a string variable
 		}
 		
-		else continue; 										// - Ignore any other (on-alpha) characters
+		else continue; 										// - Ignore any other (non-alpha) characters
 		
 	}
 	
