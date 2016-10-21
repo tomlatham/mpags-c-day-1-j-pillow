@@ -1,11 +1,47 @@
 #include <iostream>
 #include <string>
+#include <vector>
 
-int main()
-{
-	// Take each letter from user input and in each case:
+int main(int argc, char* argv[]){
+
+	std::vector<std::string> cmdLineArgs{argv, argv+argc};
 	
+	std::string oFile_name{""};
+	std::string iFile_name{""};
 	
+	for(size_t i=0;i<cmdLineArgs.size();i++){
+		if(cmdLineArgs[i] == "-h" || cmdLineArgs[i] == "--help"){
+			std::cout << "You have requested help!. This is some help. I hope it was helpful. Goodbye!" << std::endl;
+			return 0;
+		}
+		if(cmdLineArgs[i] == "--version"){
+			std::cout << "You have requested the version! Current version is: v0.1.0" << std::endl;
+			return 0;
+		}
+		if(cmdLineArgs[i] == "-o"){
+			if(i+1==cmdLineArgs.size()){
+				std::cout << "Error! Error! No output file given!" << std::endl;
+				return 0;
+			}
+			else{
+				oFile_name = cmdLineArgs[i+1];
+				i++;
+			}
+		}
+		if(cmdLineArgs[i] == "-i"){
+			if(i+1==cmdLineArgs.size()){
+				std::cout << "Error! Error! No input file given!" << std::endl;
+				return 0;
+			}
+			else{
+				iFile_name = cmdLineArgs[i+1];
+				i++;
+			}
+		}
+	}
+	
+	std::cout << "Output file: " << oFile_name << " | Input file: " << iFile_name << std::endl;
+		
 	std::string my_str = {""};
 	char in_char{'x'};
 	char upper_char{'y'};
