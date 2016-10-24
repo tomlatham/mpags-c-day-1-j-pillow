@@ -8,47 +8,54 @@ int main(int argc, char* argv[]){
 	- All numbers are converted to words
 	- All non-alphas are removes */
 	
+	std::string versionNumber{"v0.1.0"}; 	// Current version number
+	
 	std::vector<std::string> cmdLineArgs{argv, argv+argc};
 	
 	std::string oFile_name{""};		// Create strings for input/output file names
 	std::string iFile_name{""};
 	
 	for(size_t i=0;i<cmdLineArgs.size();i++){							// Check cmd line arguments
-		if(cmdLineArgs[i] == "-h" || cmdLineArgs[i] == "--help"){
+		if(cmdLineArgs[i] == "-h" || cmdLineArgs[i] == "--help"){		// Provides help if asked
 			std::cout << "You have requested help!. This is some help. I hope it was helpful. Goodbye!" << std::endl;
 			return 0;
 		}
-		if(cmdLineArgs[i] == "--version"){
-			std::cout << "You have requested the version! Current version is: v0.1.0" << std::endl;
+		if(cmdLineArgs[i] == "--version"){											// Provides version number if asked
+			std::cout << "You have requested the version! Current version is: " << versionNumber << std::endl;
 			return 0;
 		}
-		if(cmdLineArgs[i] == "-o"){
+		if(cmdLineArgs[i] == "-o"){													// Checks for output file
 			if(i+1==cmdLineArgs.size()){
 				std::cout << "Error! Error! No output file given!" << std::endl;
 				return 0;
 			}
 			else{
 				oFile_name = cmdLineArgs[i+1];
+				std::cout << "Output file: " << cmdLineArgs[i+1] << std::endl;
 				i++;
 			}
 		}
-		if(cmdLineArgs[i] == "-i"){
+		if(cmdLineArgs[i] == "-i"){													// Checks for input file
 			if(i+1==cmdLineArgs.size()){
 				std::cout << "Error! Error! No input file given!" << std::endl;
 				return 0;
 			}
 			else{
 				iFile_name = cmdLineArgs[i+1];
+				std::cout << "Input file: " << cmdLineArgs[i+1] << std::endl;
 				i++;
 			}
 		}
 	}
 	
-	std::cout << "Output file: " << oFile_name << " | Input file: " << iFile_name << std::endl;
+	//std::cout << "Output file: " << oFile_name << " | Input file: " << iFile_name << std::endl;
 		
 	std::string my_str = {""};
 	char in_char{'x'};
 	char upper_char{'y'};
+	
+	std::cout << "Please provide user input. When done press Enter followed by Ctrl+D." << std::endl;	// Provide instructions for use 
+		
 	while(std::cin >> in_char){
 		/* Loop until the user
 		presses Enter then Ctrl+D */
